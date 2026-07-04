@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply bg-black text-white font-poppins;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  .glow-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-red-600;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+  }
+
+  .glow-box {
+    @apply relative;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2), 0 0 40px rgba(220, 20, 60, 0.1);
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md bg-white/5 border border-white/10 rounded-lg;
+  }
+
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+
+  .hero-title {
+    @apply text-4xl sm:text-6xl lg:text-8xl font-bold font-montserrat tracking-tight;
+  }
+
+  .section-title {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold font-montserrat mb-6 sm:mb-8;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-red-500/50;
+  }
+}
+
+/* Custom scroll animations */
+[data-animate] {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+[data-animate="left"] {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+[data-animate="right"] {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+/* Parallax effect */
+.parallax-bg {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Dark overlay for images */
+.dark-overlay {
+  position: relative;
+}
+
+.dark-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.dark-overlay > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .hero-title {
+    @apply text-3xl;
+  }
+
+  .section-title {
+    @apply text-2xl sm:text-3xl;
+  }
+}
